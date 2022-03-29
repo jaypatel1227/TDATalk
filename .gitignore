@@ -11,3 +11,6 @@
 /presentation.snm
 /presentation.synctex.gz
 /presentation.toc
+presentation.fdb_latexmk
+.gitignore
+presentation.fls

@@ -134,13 +134,14 @@ The Ohio State University \\ % Your institution for the title page
 \begin{document}
 
 \begin{frame}
+    \nocite{mainpaper}
     \titlepage % Print the title page as the first slide
 \end{frame}
 
 \begin{frame}{Premise}
     \begin{itemize}
         \item Little is known about how the brain adapts in order to efficiently complete one task vesus another \pause
-        \item Most previous work focuses on analyzing co-fluctuations of the brain at different times \pause
+        \item Most previous work focuses on analyzing co-fluctuations of the brain at different times \cite{oldDataCollapsed}\pause
         \item Collapsing the data into co-fluctuations will make us lose useful information about the overall dynamical organization \pause
         \item This paper takes the existing data and ananlyzes it at the ``single participant level" \pause
         \item The approach of this paper is able ot probe within and between task transitions of about ($~$4-9 seconds) \pause
@@ -175,7 +176,12 @@ The Ohio State University \\ % Your institution for the title page
     \end{itemize}
 \end{frame}
 
-
+\begin{frame}{Example}
+    \begin{figure}
+        \includegraphics[width = 0.8\linewidth]{fig2.png}
+        \caption{After running Mapper on an individual's fMRI data, we are left with a graph like the above. }
+    \end{figure}
+\end{frame}
 
 \begin{frame}[allowframebreaks]
 \frametitle{References}
