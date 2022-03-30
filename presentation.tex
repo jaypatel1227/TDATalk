@@ -140,21 +140,21 @@ The Ohio State University \\ % Your institution for the title page
 
 \begin{frame}{Premise}
     \begin{itemize}
-        \item Little is known about how the brain adapts in order to efficiently complete one task vesus another \pause
+        \item Little is known about how the brain adapts in order to efficiently complete one task versus another \pause
         \item Most previous work focuses on analyzing co-fluctuations of the brain at different times \cite{oldDataCollapsed}\pause
         \item Collapsing the data into co-fluctuations will make us lose useful information about the overall dynamical organization \pause
-        \item This paper takes the existing data and ananlyzes it at the ``single participant level" \pause
-        \item The approach of this paper is able ot probe within and between task transitions of about ($~$4-9 seconds) \pause
-        \item They observe that the revealed individual differences in the dynamical organization of the subject were predictors of the task performace
+        \item This paper takes the existing data and analyze it at the ``single participant level" \pause
+        \item The approach of this paper is able to probe within and between task transitions of about ($~$4-9 seconds) \pause
+        \item They observe that the revealed individual differences in the dynamical organization of the subject were predictors of the task performance
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Data}
     \begin{itemize}
-        \item They used multiple fMRI datasets which are scans of individuals over $~$25  minutes while doing a variaty of tasks \pause
+        \item They used multiple fMRI datasets which are scans of individuals over $~$25  minutes while doing a variety of tasks \pause
         \item Previously, this data has typically been used in models after some kind of ``averaging'' procedure \pause
         % methods based on sliding-window, single-volume co-activation patterns, wavelets, change-point detection, deconvolution, multiplication of temporal derivatives, and temporal Independent Component Analysis have been proposed
-        \item The previous approaches have been unable to reveal the optimal temporal and spatial scales which best probe clinically and behearviorly relevant brain dynamics \pause
+        \item The previous approaches have been unable to reveal the optimal temporal and spatial scales which best probe clinically and behaviorally relevant brain dynamics \pause
         \item Additionally, they are unable to determine if the brain dynamics are best thought of as continuous or discrete or able to tell whether a particular brain activity is healthy or not
     \end{itemize}
 \end{frame}
@@ -168,10 +168,10 @@ The Ohio State University \\ % Your institution for the title page
 
 \begin{frame}{How Mapper works}
     \begin{itemize}
-        \item Step b the filtering into $\R^2$ is done using something called Stochastic Neightborhood Estimation. \pause SNE, is used over traditional methods like PCA because SNE allows us to preserve the local structure of the origional data \pause
+        \item Step b the filtering into $\R^2$ is done using something called Stochastic Neighborhood Estimation. \pause SNE, is used over traditional methods like PCA because SNE allows us to preserve the local structure of the original data \pause
         \item Step c is just binning the space using the provided parameters: number of bins and the percentage overlap between bins\pause
         \item Step d goes through each bin, and performs single-linkage clustering in order to form clusters of nearby points\pause 
-        \item Step e treats each cluster as a vertex of a graph and adds an edge between two vertices if they shared a point \cite{mapper}
+        \item Step e treats each cluster as a vertex of a graph and adds an edge between two vertices if they shared a point\cite{mapper}
         % The authors used something called the CMP dataset which is pretty standard and after applying mapper to each participant in CMP, they want to analyze the properties of each person's graph
     \end{itemize}
 \end{frame}
@@ -182,6 +182,43 @@ The Ohio State University \\ % Your institution for the title page
         \caption{After running Mapper on an individual's fMRI data, we are left with a graph like the above. }
     \end{figure}
 \end{frame}
+
+\begin{frame}{How do we analyze these graphs?}
+    \begin{itemize}
+        \item The most interesting and practical thing we can do with this graph is try to understand the mesoscale structure of this graph \pause
+        \item The most commonly analyzed mesoscale structures are community structures and core-periphery structures \pause
+        \item *need to explain the structure of the graph out of the mapper pipeline does it have weights on the edges? What are the strengths on the nodes?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Analyzing the community structure of a graph}
+    \begin{itemize}
+        \item You can think about the community structure as the measure of if there are many ``communities'' of densely connected nodes (not necessarily cliques) where there are only a few connections between communities \pause
+        \item $Q_{\mathrm{mod}}$ is the most commonly used metric to assess the community structure of a graph\cite{community}
+    \end{itemize}
+    \[Q_{\mathrm{mod}} = \sum_{i,j} \left(A_{i,j} - \frac{k_i k_j}{\sum_{ij}A_{ij}}\right)\delta(g_i, g_j)\]
+    where $A$ is the adjacency matrix, $k_i$ is the strength of the node $i$, and $g_i$ is the community that $i$ belongs to.
+\end{frame}
+
+\begin{frame}{How $Q_{\mathrm{mod}}$ scales}
+    \begin{figure}
+        % \includegraphics[width = 0.8\linewidth]{fig3.png}
+        \caption{There are two different participants' shape graphs and the relations between modularity and various metrics}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Analyzing the core-periphery structure of the graph}
+    
+\end{frame}
+
+\begin{frame}{How coreness score (CS) scales}
+    \begin{figure}
+        % \includegraphics[width = 0.8\linewidth]{fig4.png}
+        \caption{There are two different participants' shape graphs and the CS of their nodes, CS derived from our data and the null models(neuRosim, phase randomization, and constant phase), and a diagram of regions of the brain that were associated with high coreness}
+    \end{figure}
+\end{frame}
+
+
 
 \begin{frame}[allowframebreaks]
 \frametitle{References}
