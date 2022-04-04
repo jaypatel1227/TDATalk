@@ -179,22 +179,34 @@ The Ohio State University \\ % Your institution for the title page
 \begin{frame}{Filtering in Mapper}
     \begin{figure}
         \begin{columns}
-            \begin{column}{0.3\textwidth}
+            \begin{column}{0.4\textwidth}
                 \includegraphics[width = \linewidth]{filter.png}
             \end{column}
-            \begin{column}{0.65\textwidth}
-                \caption{Toy example of applying a filter to data\cite{mapper}. The data is sampled from a noisy circle, and the filter used is $f(x) = ||x - p||^2$, where $p$ is the left most point in the data. We divide the range of the filter into 5 intervals which have length 1 and a 20$\%$ overlap. For each interval we compute the clustering of the points lying within the domain of the filter restricted to the interval, and connect the clusters whenever they have non-empty intersection. At the bottom is the simplicial complex which we recover whose vertices are colored by the average filter value. Our paper uses a very different filter function. They use something called the Neighborhood Lens function to take their 271633-dimensional data into $\R^2$. This function is part of a patented software that appears to be standard. }
+            \begin{column}{0.55\textwidth}
+                \caption{Toy example of applying a filter to data\cite{mapper}. The data is sampled from a noisy circle, and the filter used is $f(x) = ||x - p||^2$, where $p$ is the left most point in the data. We divide the range of the filter into 5 intervals which have length 1 and a 20$\%$ overlap. For each interval we compute the clustering of the points lying within the domain of the filter restricted to the interval, and connect the clusters whenever they have non-empty intersection. At the bottom is the simplicial complex which we recover whose vertices are colored by the average filter value.}
             \end{column}
         \end{columns}
-        
     \end{figure}
-    
+\end{frame}
+
+\begin{frame}{Diagram of the Filtering process}
+    \begin{figure}
+        \includegraphics[width = 0.9\linewidth]{fig1ab.png}
+        \caption{Our paper uses a very different filter function than the previous example. They use something called the Neighborhood Lens function to take their 271633-dimensional data into $\R^2$. This function is part of a patented software that appears to be standard.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Clustering}
+    \begin{figure}
+        \includegraphics[width=0.8\linewidth]{fig1cd.png}
+        \caption{Mapper take two parameters when binning the data: Resolution and Gain. Resolution controls the number of bins and Gain controls the overlap between bins.}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Example}
     \begin{figure}
         \includegraphics[width = 0.85\linewidth]{fig2.png}
-        \caption{After running Mapper on an individual's fMRI data, we are left with a graph like the above. }
+        \caption{After running Mapper on an individual's fMRI data, we are left with a graph like the above. The fMRI datasets ($1017\times271633)$ matrix) were compressed to $279\pm60$ points.}
     \end{figure}
 \end{frame}
 
@@ -210,7 +222,7 @@ The Ohio State University \\ % Your institution for the title page
 
 \begin{frame}{Analyzing the community structure of a graph}
     \begin{itemize}
-        \item You can think about the community structure as the measure of if there are many ``communities'' of densely connected nodes (not necessarily cliques) where there are only a few connections between communities \pause
+        \item You can think about the community structure as the measure of if there are many ``communities'' of densely connected nodes (not necessarily cliques) there are where there are only a few connections between communities \pause
         \item Suppose that you have a weighted graph $G$ and for each vertex $i$, we have ``node strength" weight $k_i$ on $i$ \pause
         \item $Q_{\mathrm{mod}}$ (called the modularity) is the most commonly used metric to assess the community structure of a graph\cite{community} \pause
     \end{itemize}
@@ -222,8 +234,8 @@ The Ohio State University \\ % Your institution for the title page
     \begin{itemize}
         \item It is based on the idea that a random graph is not expected to have a cluster structure, so the possible existence of clusters is revealed by the comparison between the actual density of edges in a subgraph and the density one would expect to have in the subgraph if the vertices of the graph
         were attached regardless of community structure
-        \item This expected edge density ($P_{ij} = \frac{k_ik_j}{2m}$ where $m = \sum_{ij}A_{ij}$) depends on the chosen null model, i.e. a copy of the original graph keeping some of its structural properties but without community structure\cite{community}
-        \item 
+        \item This expected edge density ($P_{ij} = \frac{k_ik_j}{2m}$ where $m = \sum_{ij}A_{ij}$) depends on the chosen null model, i.e. a copy of the original graph keeping some of its structural properties but without community structure\cite{community}\pause
+        \item In this case, the null model that produces the above expected edge density is called the configuration model. This a very standard type of model in network science because, as opposed to the Erd\H{o}s-Renyi model, this model allows us to give the network arbitrary degree distributions. (The Erd\H{o}s-Renyi model only allows for Poisson distribution for the degree sequence).
     \end{itemize}
 \end{frame}
 
@@ -242,8 +254,8 @@ The Ohio State University \\ % Your institution for the title page
 
 \begin{frame}{How coreness score (CS) scales}
     \begin{figure}
-        \includegraphics[width = 0.7\linewidth]{fig4.png}
-        \caption{CS for two different shape graphs, CS derived from our data and the null models(neuRosim, phase randomization, and constant phase), and a diagram of regions of the brain that were associated with high coreness}
+        \includegraphics[width = 0.85\linewidth]{fig4.png}
+        %\caption{CS for two different shape graphs, CS derived from our data and some null models, and a diagram of regions of the brain that were associated with high coreness}
     \end{figure}
 \end{frame}
 
@@ -273,8 +285,7 @@ The Ohio State University \\ % Your institution for the title page
     
 \end{frame}
 
-\begin{frame}[allowframebreaks]
-\frametitle{References}
+\begin{frame}[allowframebreaks]{References}
 \printbibliography
 \end{frame}
 
