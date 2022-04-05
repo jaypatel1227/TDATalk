@@ -12,7 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
-%	PACKAGES AND THEMES
+%   PACKAGES AND THEMES
 %----------------------------------------------------------------------------------------
 
 \documentclass{beamer}
@@ -116,7 +116,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%	TITLE PAGE
+%   TITLE PAGE
 %----------------------------------------------------------------------------------------
 
 \title[Dynamical organization of brain using TDA]{Towards a new approach to reveal dynamical
@@ -140,11 +140,11 @@ The Ohio State University \\ % Your institution for the title page
 
 \begin{frame}{Premise}
     \begin{itemize}
-        \item Little is known about how the brain adapts in order to efficiently complete one task versus another \pause
+        \item Little is known about how the brain adapts to efficiently complete one task versus another \pause
         \item Most previous work focuses on analyzing co-fluctuations of the brain at different times\cite{oldDataCollapsed}\pause
         \item Collapsing the data into co-fluctuations will make us lose useful information about the overall dynamical organization \pause
-        \item This paper takes the existing data and analyze it at the ``single participant level" \pause
-        \item The approach of this paper is able to probe within and between task transitions of about ($\sim$4-9 seconds) \pause
+        \item This paper takes the existing data and analyzes it at the ``single participant level" \pause
+        \item The approach of this paper can probe within and between task transitions of about ($\sim$4-9 seconds) \pause
         \item They observe that the revealed individual differences in the dynamical organization of the subject were predictors of the task performance
     \end{itemize}
 \end{frame}
@@ -154,8 +154,8 @@ The Ohio State University \\ % Your institution for the title page
         \item They used multiple fMRI datasets which are scans of individuals over $\sim$25  minutes while doing a variety of tasks \pause
         \item Previously, this data has typically been used in models after some kind of ``averaging'' procedure \pause
         % methods based on sliding-window, single-volume co-activation patterns, wavelets, change-point detection, deconvolution, multiplication of temporal derivatives, and temporal Independent Component Analysis have been proposed
-        \item The previous approaches have been unable to reveal the optimal temporal and spatial scales which best probe clinically and behaviorally relevant brain dynamics \pause
-        \item Additionally, they are unable to determine if the brain dynamics are best thought of as continuous or discrete or able to tell whether a particular brain activity is healthy or not
+        \item The previous approaches have been unable to reveal the optimal temporal and spatial scales that best probe clinically and behaviorally relevant brain dynamics \pause
+        \item Additionally, they are unable to determine if the brain dynamics are best thought of as continuous or discrete or able to tell whether particular brain activity is healthy or not
     \end{itemize}
 \end{frame}
 
@@ -168,9 +168,9 @@ The Ohio State University \\ % Your institution for the title page
 
 \begin{frame}{How Mapper works}
     \begin{itemize}
-        \item Step 1 the filtering into $\R^2$ is done using something called Stochastic Neighborhood Estimation. SNE, is used over traditional methods like PCA because SNE allows us to preserve the local structure of the original data \pause % PCA involves changing basis and thus destroys local structure
+        \item Step 1 the filtering into $\R^2$ is done using something called Stochastic Neighborhood Estimation. SNE is used over traditional methods like PCA because SNE allows us to preserve the local structure of the original data \pause % PCA involves changing basis and thus destroys the local structure
         \item Step 2 is just binning the space using the provided parameters: number of bins and the percentage overlap between bins\pause
-        \item Step 3 goes through each bin, and performs single-linkage clustering in order to form clusters of nearby points\pause 
+        \item Step 3 goes through each bin and performs single-linkage clustering to form clusters of nearby points\pause 
         \item Step 4 treats each cluster as a vertex of a graph and adds an edge between two vertices if they shared a point\cite{mapper}
         % The authors used something called the CMP dataset which is pretty standard and after applying mapper to each participant in CMP, they want to analyze the properties of each person's graph
     \end{itemize}
@@ -212,9 +212,9 @@ The Ohio State University \\ % Your institution for the title page
 
 \begin{frame}{How do we analyze these graphs?}
     \begin{itemize}
-        \item The most interesting and practical thing we can do with this graph is try to understand the mesoscale structure of this graph \pause
+        \item The most interesting and practical thing we can do with this graph is trying to understand the mesoscale structure of this graph \pause
         \item The most commonly analyzed mesoscale structures are community structures and core-periphery structures \pause
-        \item Note: It is necessary to have weights on the edges to perform analysis of community structure or core-periphery structure
+        \item Note: It is necessary to have weights on the edges to perform an analysis of community structure or core-periphery structure
         \item This paper doesn't describe how they acquire weights on the edges and there is no canonical way to assign weights from mapper \pause
         \item Two likely possibilities: the weight between two nodes is the number of timeframes they shared, or the weight is something that depends on the mean distance between the timeframes constituting the nodes
     \end{itemize}
@@ -233,9 +233,9 @@ The Ohio State University \\ % Your institution for the title page
 \begin{frame}{Some intuition for $Q_{\mathrm{mod}}$}
     \begin{itemize}
         \item It is based on the idea that a random graph is not expected to have a cluster structure, so the possible existence of clusters is revealed by the comparison between the actual density of edges in a subgraph and the density one would expect to have in the subgraph if the vertices of the graph
-        were attached regardless of community structure
+        were attached regardless of community structure\cite{originalcommunity}
         \item This expected edge density ($P_{ij} = \frac{k_ik_j}{2m}$ where $m = \sum_{ij}A_{ij}$) depends on the chosen null model, i.e. a copy of the original graph keeping some of its structural properties but without community structure\cite{community}\pause
-        \item In this case, the null model that produces the above expected edge density is called the configuration model. This a very standard type of model in network science because, as opposed to the Erd\H{o}s-Renyi model, this model allows us to give the network arbitrary degree distributions. (The Erd\H{o}s-Renyi model only allows for Poisson distribution for the degree sequence).
+        \item In this case, the null model that produces the expected edge density in the above definition is called the configuration model\cite{configurationmodel}. This is a very standard type of model in network science because, as opposed to the Erd\H{o}s-Renyi model, this model allows us to give the network arbitrary degree distributions. (The Erd\H{o}s-Renyi model only allows for Poisson distribution for the degree sequence).
     \end{itemize}
 \end{frame}
 
@@ -266,11 +266,11 @@ The Ohio State University \\ % Your institution for the title page
     \end{figure}
 \end{frame}
 
-\begin{frame}{Trying to explain the topological features using anatomy}
-    \begin{itemize}
-        \item 
-    \end{itemize}
-\end{frame}
+% \begin{frame}{Trying to explain the topological features using anatomy}
+%     \begin{itemize}
+%         \item 
+%     \end{itemize}
+% \end{frame}
 
 \begin{frame}{Connectivity in the shape graph for different times}
     \begin{figure}
@@ -286,12 +286,22 @@ The Ohio State University \\ % Your institution for the title page
     \end{figure}
 \end{frame}
 
-\begin{frame}{}
-    
+\begin{frame}{Discussion and Conclusions}
+    \begin{itemize}
+        \item Many mental disorders have been linked with the inability to adjust to environmental demands
+        \item The community structure was found to be essential for the overall task performance
+        \item The core$-$periphery arrangement revealed that brain activity patterns during evoked tasks were aggregated as a core while patterns during the resting state were located in the periphery
+        \item This paper is one of the first to take the entire fMRI dataset into their analysis and, in particular, this approach is the first to be able to pinpoint relatively few times that are responsible for the brain dynamics
+        \item Additionally, there are no assumptions made about parts of the brain and the observations are consistent with our knowledge of regions of the brain
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{}
-    
+\begin{frame}{Prospects for further research}
+    \begin{itemize}
+        \item The analysis done in this paper can pick out transitions between tasks but not in any which could be used as clinically relevant markers
+        \item The data used in this paper has very well controlled transitions, and thus it remains to test the ``stability'' of the Mapper-based pipeline
+        \item Lastly, applying there is a need to apply these methods to a dataset where there are aberrant brain dynamics 
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{References}
