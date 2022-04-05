@@ -250,6 +250,7 @@ The Ohio State University \\ % Your institution for the title page
     \begin{itemize}
         \item We assign each node a coreness score (CS) by giving higher scores to nodes which lie deeper in the network
         \item The Borgatti-Everett algorithm is an algorithm that assigns coreness scores to each vertex of the shape graph. If we call $C_i$ is the coreness of vertex $i$, then we can define the core matrix $C$ by $C_{ij} = C_{i}C_j$. We can define a quality function \[R_{(\alpha,\beta)} = \sum_{i,j}A_{ij}C_{ij}\]where $(\alpha, \beta)$ are the two parameters which determines the boundary between the core and periphery and size of the core respectively. A large $\alpha$ indicates a sharp transition. 
+        \item \[CS(i) = Z \sum_{(\alpha, \beta)} C_i(\alpha, \beta) \times R(\alpha, \beta)\]where $Z$ is a normalization factor to make the maximum $CS$ be 1 and this sum is not actually over all $\alpha,\beta$ but instead over a uniform sampling of a discretization of the unit square
     \end{itemize}
 \end{frame}
 
